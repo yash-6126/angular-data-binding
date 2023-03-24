@@ -1,0 +1,25 @@
+<div class="container">
+  <app-cockpit (serverCreated)="onServerAdded($event)" (bpCreated)="onBlueprintAdded($event)"></app-cockpit>
+  <hr>
+  <button (click)="onClickDestroy()" class="btn btn-danger">Destroy First Component</button>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-server-element 
+        *ngFor="let serverElement of serverElements; let i = index" 
+        [name]="serverElement.name" 
+        [index]="i" 
+        (serverClick)="onClicked($event)">
+        <p #contentParagraph>
+          <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+          <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+        </p>
+      </app-server-element>
+    </div>
+  </div>
+</div>
+
+<!-- Assignment -->
+<!-- <app-game-control (incrementNumber)="getIncrementedNumber($event)"></app-game-control>
+<app-odd *ngIf="counter % 2 !== 0" [value]="counter"></app-odd>
+<app-even *ngIf="counter % 2 === 0" [value]="counter"></app-even> -->
+ 
